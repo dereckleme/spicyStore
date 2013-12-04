@@ -21,13 +21,15 @@ class IndexController extends AbstractActionController
     }
     public function pesquisaAction()
     {
+    	$RouteMatch = $this->getEvent()->getRouteMatch();
+    	print_r($RouteMatch);
+    	die();
     	$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
     	$repo = $em->getRepository("Application\Entity\Imagens")->findAll();
     	$repoCat = $em->getRepository("Application\Entity\Categoria")->findAll();
     	$repoFormat  = $em->getRepository("Application\Entity\Formato")->findAll();
-    	$RouteMatch = $this->getEvent()->getRouteMatch();
-    	print_r($RouteMatch);
-    	die();
+    	
+    	
     	return new ViewModel(array("RouteMatch" => $RouteMatch, "imagens" => $repo,"categorias" => $repoCat ,"formatos" => $repoFormat));
     }
 }
