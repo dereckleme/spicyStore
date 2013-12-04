@@ -1,0 +1,251 @@
+
+<style>
+body{
+    background: url('<?=$this->basepath()?>/img/image2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;  
+}
+
+</style>
+<link rel="stylesheet" href="<?=$this->basePath()?>/css/iconfinder.css" />
+<a name="#top"></a>
+<div id="filters-bar">
+        <section id="filters" style="padding-top:15px;padding-left:12px;">
+          <ul class="nav nav-pills">
+          <?php 
+          	foreach($this->categorias AS $categoria)
+          	{
+          ?>
+	        <li class="dropdown" style="font-weight: bold;font-size:14px;">
+	          <a id="drop4" role="button" data-toggle="dropdown" href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug()), array(), $this->RouteMatch);?>"><?=ucwords($categoria->getTitulo())?> <b class="caret"></b></a>
+	          <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+	          <?php 
+	          		foreach($categoria->getSubCategorias() AS $subcategoria)
+	          		{
+	          ?>
+	            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug(),"subcategoria" => $subcategoria->getSlug()),array(), $this->RouteMatch);?>"><?=$subcategoria->getTitulo()?></a></li>
+	         	<?php 
+	          		}
+	         	?>
+	          </ul>
+	        </li>
+	        <?php 
+          	}
+	        ?>
+      </ul>
+        </section>
+    </div>        
+    <div class="navbar">
+    <div class="navbar-inner" style="opacity:0.7;">
+        <div class="container">
+            <div class="navbar-item">
+                <a class="pull-left " title="Go to homepage" href="https://www.iconfinder.com/" Style="font-weight: bold;font-size:20px;">Spicy Store</a>
+            </div>
+
+            <div id="searcharea">
+                <form id="searchform" action="/search/">
+                  <input type="text" style="font-size:13px;"/><button class="btn btn-primary" type="submit">Pesquisar</button>
+                </form>
+               
+            </div>
+
+<div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+        
+            <li id="browse-collapsed"><a href="https://www.iconfinder.com/browse">Browse icons</a></li>
+            <li class="divider"></li>
+            <li class="navbar-item"><a class="login-link" href="#">Log in</a></li>
+            <li class="navbar-item"><a class="signup-link" href="#">Sign up</a></li>
+        
+    </ul>
+</div>
+        </div>
+    </div>
+</div>
+
+<div id="filters-bar">
+        <section id="filters" style="padding-top:15px;padding-left:12px;">
+            <div data-search-filter="type" id="format" class="filter" >
+                <div class="btn-group">
+                    <button data-value="any" class="btn"><a href="<?=$this->url('application/default',array("formato" => null), array(), $this->RouteMatch);?>">Todos Formatos</a></button>
+                    <?php 
+                    	foreach($this->formatos AS $formato)
+                    	{
+                    		?>
+                    		<button data-toggle="tooltip" data-value="vector" class="btn" data-original-title="Include only icons in vector formats."><i class="icon-if icon-if-vector">&nbsp;</i> <a href="<?=$this->url('application/default',array("formato" => $formato->getNome()),array(), $this->RouteMatch);?>"><?=strtoupper($formato->getNome())?></a></button>
+                    		<?php
+                    	}
+                    ?>
+                    
+                </div>
+            </div>
+            <div id="sizes" class="filter">
+                <input value="128 px" id="max-disp" name="max-disp">
+                <input value="0 px" id="min-disp" name="min-disp">
+                <div id="size-slider1">
+                    <select id="valueA" name="valueA" style="display: none;">
+                        
+                            <option selected="selected" value="0">0 px</option>
+                        
+                            <option value="12">12 px</option>
+                        
+                            <option value="16">16 px</option>
+                        
+                            <option value="24">24 px</option>
+                        
+                            <option value="32">32 px</option>
+                        
+                            <option value="48">48 px</option>
+                        
+                            <option value="64">64 px</option>
+                        
+                            <option value="128">128 px</option>
+                        
+                            <option value="256">256 px</option>
+                        
+                            <option value="512">512 px</option>
+                        
+                    </select>
+                    <select id="valueB" name="valueB" style="display: none;">
+                        
+                            <option value="0">0 px</option>
+                        
+                            <option value="12">12 px</option>
+                        
+                            <option value="16">16 px</option>
+                        
+                            <option value="24">24 px</option>
+                        
+                            <option value="32">32 px</option>
+                        
+                            <option value="48">48 px</option>
+                        
+                            <option value="64">64 px</option>
+                        
+                            <option selected="selected" value="128">128 px</option>
+                        
+                            <option value="256">256 px</option>
+                        
+                            <option value="512">512 px</option>
+                        
+                    </select><div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" role="application"><a aria-valuetext="0 px" aria-valuenow="0" aria-valuemax="9" aria-valuemin="0" aria-labelledby="undefined" role="slider" class="ui-slider-handle ui-state-default ui-corner-all" id="handle_valueA" tabindex="0" href="#" style="left: 0%;"><span class="screenReaderContext"></span><span class="ui-slider-tooltip ui-widget-content ui-corner-all"><span class="ttContent">0 px</span><span class="ui-tooltip-pointer-down ui-widget-content"><span class="ui-tooltip-pointer-down-inner" style="border-top: 7px solid rgb(255, 255, 255);"></span></span></span></a><a aria-valuetext="128 px" aria-valuenow="7" aria-valuemax="9" aria-valuemin="0" aria-labelledby="undefined" role="slider" class="ui-slider-handle ui-state-default ui-corner-all" id="handle_valueB" tabindex="0" href="#" style="left: 77.7778%;"><span class="screenReaderContext"></span><span class="ui-slider-tooltip ui-widget-content ui-corner-all"><span class="ttContent">128 px</span><span class="ui-tooltip-pointer-down ui-widget-content"><span class="ui-tooltip-pointer-down-inner" style="border-top: 7px solid rgb(255, 255, 255);"></span></span></span></a><ol role="presentation" class="ui-slider-scale ui-helper-reset"><li style="left:0.00%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -3px;">0</span><span style="display: none;" class="ui-slider-tic ui-widget-content"></span></li><li style="left:11.11%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">12</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:22.22%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">16</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:33.33%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">24</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:44.44%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">32</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:55.56%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">48</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:66.67%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">64</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:77.78%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">128</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:88.89%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">256</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:100.00%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">512</span><span style="display: none;" class="ui-slider-tic ui-widget-content"></span></li></ol><div class="ui-slider-range ui-widget-header" style="left: 0%; width: 77.7778%;"></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="back-container">
+        <div id="searchresults-outer">
+            
+                
+
+
+
+
+
+
+
+
+
+<div id="searchresults-container">
+
+    <div id="searchresults">
+        <Style>#searchresults .related {
+padding: 18px 18px 0 18px;
+display: block;
+}
+    
+    </Style>
+            <span class="related">
+            <?php 
+            foreach($this->imagens AS $image)
+            {
+            	foreach($image->getIdtipo() AS $tipo)
+            	{
+            		$titulosRelacionado[] = '<a href="'.$this->url('application/default',array("relacionado" => $tipo->getTitulo()), array(), $this->RouteMatch).'" style="font-size:16px;">'.$tipo->getTitulo()."</a>";
+            	}
+            }
+            ?>
+                Imagem relacionada: <?=implode($titulosRelacionado, ",")?>
+            </span>
+        
+
+        <div style="min-height: 208px;" id="icons" data-totalresults="3" class="icons-container-white icondimension-190" data-algorithm="time-popularity-60-20-50">
+            <style type="text/css">
+                #icons .icon {
+                    /*width: 190px;*/
+                    height: 190px;
+                }
+
+                #icons .icon a.iconlink {
+                    height: 127px;
+                    line-height: 127px;
+                }
+            </style>
+            
+            
+                
+                
+                    
+
+                
+    <?php 
+    	foreach($this->imagens AS $image)
+    	{
+    ?>                
+
+<div class="icon" id="icon-23034" data-package-id="122" data-icon-id="23034">
+    <a href="#" class="favorite js-icon-favorite">&nbsp;</a>
+    
+    <div class="iconlinks">
+        <div class="downloadlinks">
+            
+            
+                <a rel="nofollow" title="Download this icon in PNG format for use in Linux, Mac or Photoshop." class="downloadlink" href="https://www.iconfinder.com/icons/23034/download/png/58" data-format="png" data-icon-id="23034" data-size="58"><?=strtoupper($image->getIdformato()->getNome())?></a>
+            
+            
+        </div>
+    </div>
+    <a title="<?=$image->getTitulo()?>" class="iconlink" href="https://www.iconfinder.com/icons/23034/ferrari_icon#size=58">
+        <img alt="ferrari icon" class="tiled-icon" style="width: 58px; height: 57px;" src="<?=$this->basepath("store/".$image->getIdcategoria()->getSlug()."/".$image->getIdsubcategoria()->getSlug()."/".$image->getSrc())?>">
+    </a>
+</div>
+         <?php 
+    	} 
+         ?>       
+                
+            
+        </div>
+        <div class="clearboth">&nbsp;</div>
+        
+    </div>
+</div>
+            
+        </div>
+    </div>
+        <div class="footer contentpage">
+
+    	<footer>
+    <div class="links">
+        <a href="https://www.iconfinder.com/about/about">About us</a>
+        <a href="http://blog.iconfinder.com/">Blog</a>
+        <a href="https://www.iconfinder.com/about/api">API</a>
+        <a href="http://support.iconfinder.com/">Help &amp; support</a>
+        <a href="https://www.iconfinder.com/contribute">Upload icons</a>
+        <a href="http://shop.iconfinder.com/">T-shirts &amp; stickers</a>
+        <a href="https://www.iconfinder.com/about/termsofservice">Terms of service</a>
+        <a href="https://www.iconfinder.com/about/privacypolicy">Privacy policy</a>
+        <a href="https://www.iconfinder.com/free_icons">Free icons</a>
+    </div>
+    <div class="proudlymadebyus">
+        Spicy Web Copyright 2013 · All rights reserved
+    </div>
+</footer>
+
+        <div class="banner">
+            <div id="bsap_538" class="bsaPROrocks" data-serve="CWSDT"></div>
+        </div>
+    </div>
+        <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Ferrari%20icons%20_%201%20_%20Iconfinder_arquivos/xd_arbiter.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+    
