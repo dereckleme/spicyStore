@@ -1,7 +1,5 @@
 <?php
-
 namespace Application\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categoria
 {
+
+	public function __construct()
+	{
+		$this->subCategorias = new \Doctrine\Common\Collections\ArrayCollection();
+	}
     /**
      * @var integer
      *
@@ -35,11 +38,7 @@ class Categoria
      * @ORM\Column(name="slug", type="string", length=45, nullable=true)
      */
     private $slug;
-	/**
-	 * @return the $idcategoria
-	 */
-    
-    
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -50,31 +49,9 @@ class Categoria
     /**
      * Constructor
      */
-    public function __construct()
-    {
-    	$this->subCategorias = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    
-    
-    /**
-     * @return the $subCategorias
-     */
-    
 	/**
-	 * @return the $subCategorias
+	 * @return the $idcategoria
 	 */
-	public function getSubCategorias() {
-		return $this->subCategorias;
-	}
-
-	/**
-	 * @param \Doctrine\Common\Collections\Collection $subCategorias
-	 */
-	public function setSubCategorias($subCategorias) {
-		$this->subCategorias = $subCategorias;
-	}
-
 	public function getIdcategoria() {
 		return $this->idcategoria;
 	}
@@ -91,6 +68,13 @@ class Categoria
 	 */
 	public function getSlug() {
 		return $this->slug;
+	}
+
+	/**
+	 * @return the $subCategorias
+	 */
+	public function getSubCategorias() {
+		return $this->subCategorias;
 	}
 
 	/**
@@ -114,6 +98,12 @@ class Categoria
 		$this->slug = $slug;
 	}
 
+	/**
+	 * @param \Doctrine\Common\Collections\Collection $subCategorias
+	 */
+	public function setSubCategorias($subCategorias) {
+		$this->subCategorias = $subCategorias;
+	}
 
-
+    
 }

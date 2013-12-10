@@ -15,9 +15,9 @@ body{
         <h1>Spicy Store</h1>
         <p>Encontre diversas imagens no Spicy Store</p>
    
-   <form class="form-inline" role="form">
+   <form class="form-inline" role="form" action="<?=$this->url('application/default');?>" method="post">
   <div class="form-group">
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Pesquisar uma imagem">
+    <input type="text" class="form-control" id="exampleInputEmail2" name="pesquisaTexto" placeholder="Pesquisar uma imagem">
   </div>
   <button type="submit" class="btn btn-success">Buscar</button>
 </form>

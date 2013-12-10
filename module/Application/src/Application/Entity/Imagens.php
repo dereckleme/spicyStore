@@ -5,7 +5,7 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Imagens
+ * EntityImagens
  *
  * @ORM\Table(name="imagens")
  * @ORM\Entity
@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Imagens
 {
+	public function __construct()
+	{
+		$this->tipos = new \Doctrine\Common\Collections\ArrayCollection();
+	}
     /**
      * @var integer
      *
@@ -25,38 +29,23 @@ class Imagens
     /**
      * @var string
      *
-     * @ORM\Column(name="titulo", type="string", length=45, nullable=true)
+     * @ORM\Column(name="titulo", type="text", nullable=true)
      */
     private $titulo;
 
-    /**
+     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="string", length=45, nullable=true)
+     * @ORM\Column(name="descricao", type="text", nullable=true)
      */
     private $descricao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="src", type="string", length=45, nullable=true)
+     * @ORM\Column(name="src", type="text", nullable=true)
      */
     private $src;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Tipo", inversedBy="idimagen")
-     * @ORM\JoinTable(name="imagens_has_tipo",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idimagen", referencedColumnName="idimagen")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idtipo", referencedColumnName="idtipo")
-     *   }
-     * )
-     */
-    private $idtipo;
 
     /**
      * @var \Categoria
@@ -66,8 +55,13 @@ class Imagens
      *   @ORM\JoinColumn(name="idcategoria", referencedColumnName="idcategoria")
      * })
      */
-    private $idcategoria;
-
+    private $categoria;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="peso", type="string", length=45, nullable=true)
+     */
+    private $peso;
     /**
      * @var \Formato
      *
@@ -76,7 +70,7 @@ class Imagens
      *   @ORM\JoinColumn(name="idformato", referencedColumnName="idformato")
      * })
      */
-    private $idformato;
+    private $formato;
 
     /**
      * @var \Subcategoria
@@ -86,15 +80,28 @@ class Imagens
      *   @ORM\JoinColumn(name="idsubcategoria", referencedColumnName="idsubcategoria")
      * })
      */
-    private $idsubcategoria;
-
+    private $subcategoria;
+    
+    
     /**
-     * Constructor
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="ImagensHasTipo", mappedBy="imagen")
      */
-    public function __construct()
-    {
-        $this->idtipo = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $tipos;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="width", type="integer", nullable=true)
+     */
+    private $width;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="height", type="integer", nullable=true)
+     */
+    private $height;
 	/**
 	 * @return the $idimagen
 	 */
@@ -124,31 +131,31 @@ class Imagens
 	}
 
 	/**
-	 * @return the $idtipo
+	 * @return the $categoria
 	 */
-	public function getIdtipo() {
-		return $this->idtipo;
+	public function getCategoria() {
+		return $this->categoria;
 	}
 
 	/**
-	 * @return the $idcategoria
+	 * @return the $formato
 	 */
-	public function getIdcategoria() {
-		return $this->idcategoria;
+	public function getFormato() {
+		return $this->formato;
 	}
 
 	/**
-	 * @return the $idformato
+	 * @return the $subcategoria
 	 */
-	public function getIdformato() {
-		return $this->idformato;
+	public function getSubcategoria() {
+		return $this->subcategoria;
 	}
 
 	/**
-	 * @return the $idsubcategoria
+	 * @return the $tipos
 	 */
-	public function getIdsubcategoria() {
-		return $this->idsubcategoria;
+	public function getTipos() {
+		return $this->tipos;
 	}
 
 	/**
@@ -180,32 +187,75 @@ class Imagens
 	}
 
 	/**
-	 * @param \Doctrine\Common\Collections\Collection $idtipo
+	 * @param Categoria $categoria
 	 */
-	public function setIdtipo($idtipo) {
-		$this->idtipo = $idtipo;
+	public function setCategoria($categoria) {
+		$this->categoria = $categoria;
 	}
 
 	/**
-	 * @param Categoria $idcategoria
+	 * @param Formato $formato
 	 */
-	public function setIdcategoria($idcategoria) {
-		$this->idcategoria = $idcategoria;
+	public function setFormato($formato) {
+		$this->formato = $formato;
 	}
 
 	/**
-	 * @param Formato $idformato
+	 * @param Subcategoria $subcategoria
 	 */
-	public function setIdformato($idformato) {
-		$this->idformato = $idformato;
+	public function setSubcategoria($subcategoria) {
+		$this->subcategoria = $subcategoria;
 	}
 
 	/**
-	 * @param Subcategoria $idsubcategoria
+	 * @param \Doctrine\Common\Collections\Collection $tipos
 	 */
-	public function setIdsubcategoria($idsubcategoria) {
-		$this->idsubcategoria = $idsubcategoria;
+	public function setTipos($tipos) {
+		$this->tipos = $tipos;
+	}
+	/**
+	 * @return the $width
+	 */
+	public function getWidth() {
+		return $this->width;
 	}
 
-    
+	/**
+	 * @return the $height
+	 */
+	public function getHeight() {
+		return $this->height;
+	}
+
+	/**
+	 * @param number $width
+	 */
+	public function setWidth($width) {
+		$this->width = $width;
+	}
+
+	/**
+	 * @param number $height
+	 */
+	public function setHeight($height) {
+		$this->height = $height;
+	}
+	/**
+	 * @return the $peso
+	 */
+	public function getPeso() {
+		return $this->peso;
+	}
+
+	/**
+	 * @param string $peso
+	 */
+	public function setPeso($peso) {
+		$this->peso = $peso;
+	}
+
+
+	
+	
+	
 }

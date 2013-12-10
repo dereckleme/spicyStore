@@ -1,0 +1,9 @@
+<br/>
+<select class="form-control subcategoriaSet"><?php 
+	foreach($this->data AS $subcategoria)
+	{
+	?>
+	<option value="<?=$subcategoria->getIdsubcategoria()?>"><?=ucwords($subcategoria->getTitulo())?></option>
+	<?php
+	}
+?></select>

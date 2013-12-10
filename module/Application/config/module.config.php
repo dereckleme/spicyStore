@@ -20,6 +20,26 @@ return array(
                     ),
                 ),
             ),
+        	'upload-imagem' => array(
+        				'type' => 'Zend\Mvc\Router\Http\Literal',
+        				'options' => array(
+        						'route'    => '/upload-imagem',
+        						'defaults' => array(
+        								'controller' => 'Application\Controller\Index',
+        								'action'     => 'adiciona',
+        						),
+        				),
+        	),
+        	'ajax-subcategoria' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/ajax-subcategoria',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Index',
+        							'action'     => 'getSubcategoria',
+        					),
+        			),
+        	),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -46,7 +66,7 @@ return array(
                 		),
                 ),
             ),
-            
+            /*
             'teste' => array(
             		'type'    => 'Literal',
             		'options' => array(
@@ -69,6 +89,7 @@ return array(
 					        ),
             		),
             ),
+            */
         ),
     ),
     'service_manager' => array(

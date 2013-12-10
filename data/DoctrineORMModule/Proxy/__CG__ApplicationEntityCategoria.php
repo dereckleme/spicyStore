@@ -42,18 +42,6 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
     }
 
     
-    public function getSubCategorias()
-    {
-        $this->__load();
-        return parent::getSubCategorias();
-    }
-
-    public function setSubCategorias($subCategorias)
-    {
-        $this->__load();
-        return parent::setSubCategorias($subCategorias);
-    }
-
     public function getIdcategoria()
     {
         if ($this->__isInitialized__ === false) {
@@ -75,6 +63,12 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
         return parent::getSlug();
     }
 
+    public function getSubCategorias()
+    {
+        $this->__load();
+        return parent::getSubCategorias();
+    }
+
     public function setIdcategoria($idcategoria)
     {
         $this->__load();
@@ -91,6 +85,12 @@ class Categoria extends \Application\Entity\Categoria implements \Doctrine\ORM\P
     {
         $this->__load();
         return parent::setSlug($slug);
+    }
+
+    public function setSubCategorias($subCategorias)
+    {
+        $this->__load();
+        return parent::setSubCategorias($subCategorias);
     }
 
 

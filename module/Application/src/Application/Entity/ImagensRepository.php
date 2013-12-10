@@ -3,6 +3,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Application;
 
 /**
  * ImagensRepository
@@ -12,4 +13,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImagensRepository extends EntityRepository
 {
+	public function getImagens($categoria,$subcategoria,$formato,$texto)
+	{
+		$qb = $this->createQueryBuilder("imagem");
+		$qb->select('imagem');
+		if($categoria) 
+		{
+			$qb->innerJoin("Application\Entity\Categoria", 'c', 'WITH', 'imagem.categoria = c.idcategoria');
+			$qb->andWhere("c.slug = '".$categoria."'");
+		}
+		if($subcategoria)
+		{
+			$qb->innerJoin("Application\Entity\Subcategoria", 's', 'WITH', 'imagem.subcategoria = s.idsubcategoria');
+			$qb->andWhere("s.slug = '".$subcategoria."'");
+		}
+		if($formato)
+		{
+			$qb->innerJoin("Application\Entity\Formato", 'f', 'WITH', 'imagem.formato = f.idformato');
+			$qb->andWhere("f.nome = '".$formato."'");
+		}
+		if($texto)
+		{
+			$qb->andWhere("(imagem.titulo LIKE '%$texto%' OR imagem.descricao LIKE '%$texto%')");
+		}
+		$query = $qb->getQuery();
+		
+		$results = $query->getResult();
+		return $results;
+	}
 }

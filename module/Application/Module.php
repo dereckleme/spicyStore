@@ -12,6 +12,9 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+use Application\Service\Image;
+use Application\Service\Formato;
+use Application\Service\Tipo;
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -35,5 +38,23 @@ class Module
                 ),
             ),
         );
+    }
+    public function getServiceConfig() {
+    	return array(
+    			'factories' => array(
+    					'Application\Service\Image' => function($service){
+    						$image = new Image($service->get('Doctrine\ORM\EntityManager'));
+    						return $image;
+    					},
+    					'Application\Service\Formato' => function($service){
+    						$formato = new Formato($service->get('Doctrine\ORM\EntityManager'));
+    						return $formato;
+    					},
+    					'Application\Service\Tipo' => function($service){
+    						$tipo = new Tipo($service->get('Doctrine\ORM\EntityManager'));
+    						return $tipo;
+    					},
+    			)
+    	);
     }
 }
