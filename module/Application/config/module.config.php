@@ -40,6 +40,36 @@ return array(
         					),
         			),
         	),
+        	'ajax-categoria' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/ajax-categoria',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Index',
+        							'action'     => 'getCategoria',
+        					),
+        			),
+        	),
+        	'ajax-subcategoria-set' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/ajax-subcategoria-set',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Index',
+        							'action'     => 'setSubcategoria',
+        					),
+        			),
+        	),
+        	'ajax-categoria-set' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/ajax-categoria-set',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Index',
+        							'action'     => 'setCategoria',
+        					),
+        			),
+        	),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -140,6 +170,18 @@ return array(
         ),
     ),
     'doctrine' => array(
+		    'eventmanager' => array(
+		    		'orm_default' => array(
+		    				'subscribers' => array(
+		    						// pick any listeners you need
+		    						'Gedmo\Tree\TreeListener',
+		    						'Gedmo\Timestampable\TimestampableListener',
+		    						'Gedmo\Sluggable\SluggableListener',
+		    						'Gedmo\Loggable\LoggableListener',
+		    						'Gedmo\Sortable\SortableListener'
+		    				),
+		    		),
+		    ),
     		'driver' => array(
     				'application_entities' => array(
     						'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',

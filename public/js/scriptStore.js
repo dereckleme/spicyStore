@@ -1,4 +1,5 @@
 $(document).ready(function(){	
+	var idCategoria;
 	$("a[rel^='prettyPhoto']").prettyPhoto();
 	$('input[type=file]').bootstrapFileInput();
 	$(".icon").hover(function(){
@@ -6,19 +7,111 @@ $(document).ready(function(){
 	},function(){
 		$(".downImage",this).animate({top: "190px"}, 200)
 	});
-	$(".categoriaSet").change(function(){
-		if($(this).val() != "")
+	$(".salvarCat").on("click",function(){
+		if($(".tituloCategoria").val() == "")
 			{
+			 alert("Nome da categoria está em branco.");
+			}
+		else
+			{
+				$.ajax({
+	    	        url: basePatch+"/ajax-categoria-set",
+	    	        type: 'POST',
+	    	        success: function( data ) 
+	                {  
+	    	        	$.ajax({
+	    	    	        url: basePatch+"/ajax-categoria",
+	    	    	        type: 'POST',
+	    	    	        success: function( data )  
+	    	                {  
+	    	    	        	$(".mostraTituloCategoria").fadeOut(function(){
+	    	    	        		$("#ajaxCat").html(data);
+	    	    	        	});
+	    	                },
+	    	    	    });
+	                },
+	    	        data: {nomeCategoria:$(".tituloCategoria").val()},
+	    	    });
+			}
+		return false;
+	})
+	$(document).on("change",".categoriaSet",function(){
+		$(".mostraTituloSubCategoria").fadeOut();
+		if($(this).val() != "" && $(this).val() != "adiciona")
+			{
+			idCategoria = $(this).val();
 				$.ajax({
 	    	        url: basePatch+"/ajax-subcategoria",
 	    	        type: 'POST',
 	    	        success: function( data )  
 	                {  
+	    	        	if(data == "")
+	    	        		{
+	    	        			$("#ajaxSub").html("<br/>");
+	    	        			$(".mostraTituloSubCategoria").fadeIn();
+	    	        		}
+	    	        	else
+	    	        		{
 	                    $("#ajaxSub").html(data);
+	    	        		}
 	                },
-	    	        data: {idCategoria:$(this).val()},
+	    	        data: {idCategoria:idCategoria},
 	    	    });
 			}
+		else if($(this).val() == "adiciona")
+			{
+				$(this).fadeOut(function(){
+					$("#ajaxSub").html("");
+					$(".mostraTituloCategoria").fadeIn();
+				});
+				$(".cancelarCategoria").on("click",function(){
+					$(".mostraTituloCategoria").fadeOut(function(){
+							$(".categoriaSet").fadeIn();
+					});
+				});
+				
+			}
+	});
+	$(".salvarSubCat").on("click",function(){
+		if($(".titulosubcategoria").val() == "")
+			{
+			 alert("Nome da subcategoria está em branco.");
+			}
+		else
+			{
+				$.ajax({
+	    	        url: basePatch+"/ajax-subcategoria-set",
+	    	        type: 'POST',
+	    	        success: function( data ) 
+	                {  
+	    	        	$.ajax({
+	    	    	        url: basePatch+"/ajax-subcategoria",
+	    	    	        type: 'POST',
+	    	    	        success: function( data )  
+	    	                { 
+	    	    	        	$(".mostraTituloSubCategoria").fadeOut();
+	    	    	        	$("#ajaxSub").html(data);
+	    	                },
+	    	    	        data: {idCategoria:idCategoria},
+	    	    	    });
+	                },
+	    	        data: {nomeSubCategoria:$(".titulosubcategoria").val(),idCategoria:idCategoria},
+	    	    });
+			}
+		return false;
+	})
+	$(document).on("change",".subcategoriaSet",function(){
+		if($(this).val() == "adiciona")
+		{
+			$(this).fadeOut(function(){
+				$(".mostraTituloSubCategoria").fadeIn();
+				$(".cancelarSubCategoria").on("click",function(){
+					$(".mostraTituloSubCategoria").fadeOut(function(){
+							$(".subcategoriaSet").fadeIn();
+					});
+				});
+			});
+		}
 	});
 	$( "#adicionaImagem" ).dialog({
 		title:"Adicionar Imagem",

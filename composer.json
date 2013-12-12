@@ -12,6 +12,7 @@
         "zendframework/zendframework": ">2.2.0rc1",
 		"zendframework/zend-developer-tools":"dev-master",
 		"doctrine/doctrine-orm-module":"0.7.*",
-        "zendframework/zftool": "dev-master"
+        "zendframework/zftool": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master"
     }
 }

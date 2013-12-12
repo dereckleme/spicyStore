@@ -15,6 +15,8 @@ use Zend\Mvc\MvcEvent;
 use Application\Service\Image;
 use Application\Service\Formato;
 use Application\Service\Tipo;
+use Application\Service\Categoria;
+use Application\Service\Subcategoria;
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -53,6 +55,14 @@ class Module
     					'Application\Service\Tipo' => function($service){
     						$tipo = new Tipo($service->get('Doctrine\ORM\EntityManager'));
     						return $tipo;
+    					},
+    					'Application\Service\Categoria' => function($service){
+    						$categoria = new Categoria($service->get('Doctrine\ORM\EntityManager'));
+    						return $categoria;
+    					},
+    					'Application\Service\Subcategoria' => function($service){
+    						$Subcategoria = new Subcategoria($service->get('Doctrine\ORM\EntityManager'));
+    						return $Subcategoria;
     					},
     			)
     	);

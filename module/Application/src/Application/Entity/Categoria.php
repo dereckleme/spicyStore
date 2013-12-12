@@ -1,5 +1,7 @@
 <?php
 namespace Application\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,7 +36,7 @@ class Categoria
 
     /**
      * @var string
-     *
+     * @Gedmo\Slug(fields={"titulo"}, unique=true)
      * @ORM\Column(name="slug", type="string", length=45, nullable=true)
      */
     private $slug;

@@ -1,0 +1,19 @@
+<?php 
+	if($this->data)
+	{
+?>
+<select class="form-control categoriaSet">
+<option value="" selected="selected">- Selecione uma categoria -</option>
+<?php 
+	foreach($this->data AS $subcategoria)
+	{
+	?>
+	<option value="<?=$subcategoria->getIdcategoria()?>"><?=ucwords($subcategoria->getTitulo())?></option>
+	<?php
+	}
+?>
+ <option value="adiciona">- Outra categoria -</option>  
+</select>
+<?php 
+	}
+?>

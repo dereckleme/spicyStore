@@ -61,6 +61,36 @@ class IndexController extends AbstractActionController
     	$viewModel->setTerminal(true);
     	return $viewModel;
     }
+    public function getCategoriaAction()
+    {
+    	$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+    	$categorias = $em->getRepository("Application\Entity\Categoria")->findAll();
+    	$viewModel = new ViewModel(array("data" => $categorias));
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
+    public function setSubcategoriaAction()
+    {
+    	if($this->getRequest()->isPost())
+    	{
+    		$service = $this->getServiceLocator()->get('Application\Service\Subcategoria');
+    		$service->insert(array("titulo" => $this->getRequest()->getPost("nomeSubCategoria"),"idCategoria" => $this->getRequest()->getPost("idCategoria")));
+    	}
+    	$viewModel = new ViewModel();
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
+    public function setCategoriaAction()
+    {
+    	if($this->getRequest()->isPost())
+    	{
+    		$service = $this->getServiceLocator()->get('Application\Service\Categoria');
+    		$service->insert(array("titulo" => $this->getRequest()->getPost("nomeCategoria")));
+    	}
+    	$viewModel = new ViewModel();
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
     public function adicionaAction()
     {
     	if($this->getRequest()->isPost())

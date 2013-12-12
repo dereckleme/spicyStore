@@ -26,6 +26,10 @@ body{
     <form enctype="multipart/formdata" class="formImagem">
     	<input class="tituloImagem" type="text" placeholder="Titulo da foto" style="height: 40px;font-size:14px;"/><Br/><br/>
     	<textarea placeholder="Descrição da foto" style="width:100%" class="descricaoImagem"></textarea><br/><br/>
+    	<span class="mostraTituloCategoria" style="display:none">
+    	<input class="tituloCategoria" type="text" placeholder="Nome da categoria" style="height: 40px;font-size:14px"/><button type="button" class="btn btn-success salvarCat" style="margin-left:3px;">Salvar</button><button  style="margin-left:3px;" type="button" class="btn btn-danger cancelarCategoria">Cancelar</button><Br/>
+    	</span>
+    	<span id="ajaxCat">
     	<select class="form-control categoriaSet">
     	<option value="" selected="selected">- Selecione uma categoria -</option>
   	<?php 
@@ -36,7 +40,11 @@ body{
 	        <?php 
           	}
 	        ?>
-		</select><span id="ajaxSub"></span>
+	    <option value="adiciona">- Outra categoria -</option>    
+		</select></span><span id="ajaxSub"></span>
+		<span class="mostraTituloSubCategoria" style="display:none">
+    	<input class="titulosubcategoria" type="text" placeholder="Nome da subcategoria" style="height: 40px;font-size:14px"/><button type="button" class="btn btn-success salvarSubCat" style="margin-left:3px;">Salvar</button><button  style="margin-left:3px;" type="button" class="btn btn-danger cancelarSubCategoria">Cancelar</button><Br/>
+    	</span>
 		<!-- 
 <div class="btn-group " data-toggle="buttons">
   <label class="btn btn-primary " style="height: 23px;padding-top:0px;margin-top:0px;">
