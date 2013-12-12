@@ -17,6 +17,7 @@ use Application\Service\Formato;
 use Application\Service\Tipo;
 use Application\Service\Categoria;
 use Application\Service\Subcategoria;
+use Application\Service\Tag;
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -63,6 +64,10 @@ class Module
     					'Application\Service\Subcategoria' => function($service){
     						$Subcategoria = new Subcategoria($service->get('Doctrine\ORM\EntityManager'));
     						return $Subcategoria;
+    					},
+    					'Application\Service\Tag' => function($service){
+    						$Tag = new Tag($service->get('Doctrine\ORM\EntityManager'));
+    						return $Tag;
     					},
     			)
     	);

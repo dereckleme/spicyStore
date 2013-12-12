@@ -91,6 +91,23 @@ class IndexController extends AbstractActionController
     	$viewModel->setTerminal(true);
     	return $viewModel;
     }
+    public function setTagAction(){
+    	if($this->getRequest()->isPost())
+    	{
+    		$service = $this->getServiceLocator()->get('Application\Service\Tag');
+    		$service->insert(array("titulo" => $this->getRequest()->getPost("tituloTag")));
+    	}
+    	$viewModel = new ViewModel();
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
+    public function getTagAction(){
+    	$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+    	$tipos = $em->getRepository("Application\Entity\Tipo")->findAll();
+    	$viewModel = new ViewModel(array("tipos" => $tipos));
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
     public function adicionaAction()
     {
     	if($this->getRequest()->isPost())

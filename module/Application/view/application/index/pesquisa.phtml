@@ -58,12 +58,13 @@ body{
   </label>
 </div><Br/> -->
 		<Br/>
-<input type="file" title="Procurar Imagem" class="fotoFile"/><br/>
+<input type="file" title="Procurar Imagem" class="fotoFile"/> <span class="viewAddTag"><a href="#" class="eventAdicionaTag"><button class="btn btn-info" type="button" >Adicionar Tag</button></a></span><span class="viewTexttag" style="display:none"><input class="tituloTag" type="text" placeholder="Titulo da Tag" style="height: 40px;font-size:14px;width:110px;"/> <a href="#" class="actionSaveRef"><button class="btn btn-success" type="button">Salvar</button></a></span><br/>
 
 <p>
 
 	<div class="btn-group" data-toggle="buttons">
 	<span style="font-size:10px;color:red">Tag's Referência</span><br/>
+	<span class="updateAjaxTipos">
 	<?php 
 		foreach($this->tipos AS $tipo)
 		{
@@ -74,7 +75,7 @@ body{
 			<?php
 		}
 	?>
-  
+  </span>
   
 </div>
 </p>
