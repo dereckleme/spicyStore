@@ -113,6 +113,38 @@ $(document).ready(function(){
 			});
 		}
 	});
+	$(".actionSaveRef").on("click",function(){
+		if($(".tituloTag").val() == "")
+			{
+				alert("Titulo da Tag está em branco.");
+			}
+		else
+			{
+			$.ajax({
+    	        url: basePatch+"/ajax-tag-set",
+    	        type: 'POST',
+    	        success: function( data )  
+                { 
+    	        	$.ajax({
+    	    	        url: basePatch+"/ajax-tag-get",
+    	    	        type: 'POST',
+    	    	        success: function( data )  
+    	                { 
+    	    	        	$(".updateAjaxTipos").html(data);
+    	                },
+    	    	    });
+                },
+    	        data: {tituloTag:$(".tituloTag").val()},
+    	    	});
+			}
+		return false;
+	});
+	$(".eventAdicionaTag").on("click",function(){
+		$(".viewAddTag").fadeOut(function(){
+			$(".viewTexttag").fadeIn();
+		});
+		return false;
+	});
 	$( "#adicionaImagem" ).dialog({
 		title:"Adicionar Imagem",
 	      resizable: false,
