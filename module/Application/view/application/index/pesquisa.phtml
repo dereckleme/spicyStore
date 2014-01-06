@@ -163,17 +163,15 @@ body{
             {
             	foreach($image->getTipos() AS $tipo)
             	{
-            		$titulosRelacionado[$tipo->getTipo()->getTitulo()] = '<a href="'.$this->url('application/default',array("relacionado" => $tipo->getTipo()->getTitulo()), array(), $this->RouteMatch).'" style="font-size:16px;">'.$tipo->getTipo()->getTitulo()."</a>";
+            		$titulosRelacionado[$tipo->getTipo()->getTitulo()] = '<a href="'.$this->url('application/default',array("relacionado" => $tipo->getTipo()->getTitulo()), array(), $this->RouteMatch).'" style="font-size:12px;">'.$tipo->getTipo()->getTitulo()."</a>";
             	}
             }
-            if(isset($titulosRelacionado))
-            {
             ?>
-                <span style="font-size:14px;color:black;font-weight: bold;">Tag's Referência</span>: <?=implode($titulosRelacionado, ",");
-            }    
-                ?>
+            
                 </div>
+                
             </div>
+            
             <div id="sizes" class="filter" style="display:none">
                 <input value="128 px" id="max-disp" name="max-disp">
                 <input value="0 px" id="min-disp" name="min-disp">
@@ -226,7 +224,9 @@ body{
                     </select><div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" role="application"><a aria-valuetext="0 px" aria-valuenow="0" aria-valuemax="9" aria-valuemin="0" aria-labelledby="undefined" role="slider" class="ui-slider-handle ui-state-default ui-corner-all" id="handle_valueA" tabindex="0" href="#" style="left: 0%;"><span class="screenReaderContext"></span><span class="ui-slider-tooltip ui-widget-content ui-corner-all"><span class="ttContent">0 px</span><span class="ui-tooltip-pointer-down ui-widget-content"><span class="ui-tooltip-pointer-down-inner" style="border-top: 7px solid rgb(255, 255, 255);"></span></span></span></a><a aria-valuetext="128 px" aria-valuenow="7" aria-valuemax="9" aria-valuemin="0" aria-labelledby="undefined" role="slider" class="ui-slider-handle ui-state-default ui-corner-all" id="handle_valueB" tabindex="0" href="#" style="left: 77.7778%;"><span class="screenReaderContext"></span><span class="ui-slider-tooltip ui-widget-content ui-corner-all"><span class="ttContent">128 px</span><span class="ui-tooltip-pointer-down ui-widget-content"><span class="ui-tooltip-pointer-down-inner" style="border-top: 7px solid rgb(255, 255, 255);"></span></span></span></a><ol role="presentation" class="ui-slider-scale ui-helper-reset"><li style="left:0.00%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -3px;">0</span><span style="display: none;" class="ui-slider-tic ui-widget-content"></span></li><li style="left:11.11%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">12</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:22.22%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">16</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:33.33%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">24</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:44.44%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">32</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:55.56%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">48</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:66.67%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -6px;">64</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:77.78%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">128</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:88.89%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">256</span><span class="ui-slider-tic ui-widget-content"></span></li><li style="left:100.00%"><span class="ui-slider-label ui-slider-label-show" style="margin-left: -9px;">512</span><span style="display: none;" class="ui-slider-tic ui-widget-content"></span></li></ol><div class="ui-slider-range ui-widget-header" style="left: 0%; width: 77.7778%;"></div></div>
                 </div>
             </div>
+            
         </section>
+        
     </div>
     <div class="back-container">
         <div id="searchresults-outer">
@@ -244,6 +244,7 @@ body{
 <div id="searchresults-container">
 
     <div id="searchresults">
+    
         <Style>#searchresults .related {
 padding: 18px 18px 0 18px;
 display: block;
@@ -262,7 +263,16 @@ display: block;
                 	?>
             
             </span>
-        
+            <div style="margin-left:20px;">
+        <?
+            if(isset($titulosRelacionado))
+            {
+            ?>
+          
+                <span style="font-size:14px;color:black;font-weight: bold;">Tag's Referência</span>: <?=implode($titulosRelacionado, ",");
+            }    
+                ?>
+                </div>
 
         <div style="min-height: 208px;" id="icons" data-totalresults="3" class="icons-container-white icondimension-190" data-algorithm="time-popularity-60-20-50">
             <style type="text/css">
