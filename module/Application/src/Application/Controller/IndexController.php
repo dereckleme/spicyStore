@@ -43,8 +43,8 @@ class IndexController extends AbstractActionController
     	{
     		$repo = $em->getRepository("Application\Entity\ImagensHasTipo")->getImagens($this->params('categoria'),$this->params('subcategoria'),$this->params('formato'),$this->params('relacionado'),$container->pesquisa);
     	}
-    	$repoCat = $em->getRepository("Application\Entity\Categoria")->findAll();
-    	$tipos = $em->getRepository("Application\Entity\Tipo")->findAll();
+    	$repoCat = $em->getRepository("Application\Entity\Categoria")->findBy(array(),array("titulo" => 'asc'));
+    	$tipos = $em->getRepository("Application\Entity\Tipo")->findBy(array(),array("titulo" => 'asc'));
     	foreach($repo AS $imagem)
     	{
     		$Formato[$imagem->getformato()->getNome()] = $imagem->getformato()->getNome();
@@ -56,7 +56,7 @@ class IndexController extends AbstractActionController
     {
     	$idCategoria = $this->getRequest()->getPost("idCategoria");
     	$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-    	$subcategorias = $em->getRepository("Application\Entity\Subcategoria")->findBy(array("categoriacategoria" => $idCategoria));
+    	$subcategorias = $em->getRepository("Application\Entity\Subcategoria")->findBy(array("categoriacategoria" => $idCategoria),array("titulo" => 'asc'));
     	$viewModel = new ViewModel(array("data" => $subcategorias));
     	$viewModel->setTerminal(true);
     	return $viewModel;
@@ -64,7 +64,7 @@ class IndexController extends AbstractActionController
     public function getCategoriaAction()
     {
     	$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
-    	$categorias = $em->getRepository("Application\Entity\Categoria")->findAll();
+    	$categorias = $em->getRepository("Application\Entity\Categoria")->findBy(array(),array("titulo" => 'asc'));
     	$viewModel = new ViewModel(array("data" => $categorias));
     	$viewModel->setTerminal(true);
     	return $viewModel;

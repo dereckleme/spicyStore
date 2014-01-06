@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="categoria")
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Application\Entity\CategoriaRepository")
+ * 
  */
 class Categoria
 {
