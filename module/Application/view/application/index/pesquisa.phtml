@@ -83,32 +83,35 @@ body{
    
 </div>
 <a name="#top"></a>
-<div id="filters-bar">
-        <section id="filters" style="padding-top:15px;padding-left:12px;">
-          <ul class="nav nav-pills">
-          <?php 
+<div id="navbar-example" class="navbar navbar-static">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                  <?php 
           	foreach($this->categorias AS $categoria)
           	{
           ?>
-	        <li class="dropdown" style="font-weight: bold;font-size:14px;">
-	          <a id="drop4" role="button" data-toggle="dropdown" href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug()), array(), $this->RouteMatch);?>"><?=ucwords($categoria->getTitulo())?> <b class="caret"></b></a>
-	          <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-	          <?php 
+                  <ul class="nav pull-left">
+                    <li id="fat-menu" class="dropdown">
+                      <a href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug()), array(), $this->RouteMatch);?>" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><?=ucwords($categoria->getTitulo())?><b class="caret"></b></a>
+                     	
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                      <?php 
 	          		foreach($categoria->getSubCategorias() AS $subcategoria)
 	          		{
 	          ?>
-	            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug(),"subcategoria" => $subcategoria->getSlug()),array(), $this->RouteMatch);?>"><?=$subcategoria->getTitulo()?></a></li>
-	         	<?php 
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=$this->url('application/default',array("categoria" => $categoria->getSlug(),"subcategoria" => $subcategoria->getSlug()),array(), $this->RouteMatch);?>"><?=$subcategoria->getTitulo()?></a></li>
+                        <?php 
 	          		}
-	         	?>
-	          </ul>
-	        </li>
-	        <?php 
+                        ?>
+                      </ul>
+                    </li>
+                  </ul>
+                  <?php 
           	}
-	        ?>
-      </ul>
-        </section>
-    </div>        
+                  ?>
+                </div>
+              </div>
+            </div>       
     <div class="navbar" style="z-index:5">
     <div class="navbar-inner" style="opacity:0.7;">
         <div class="container" >
