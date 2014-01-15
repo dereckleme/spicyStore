@@ -199,4 +199,26 @@ class IndexController extends AbstractActionController
         $viewModel->setTerminal(true);
         return $viewModel;
     }
+    public function excluirAction(){
+    	if($this->getRequest()->isPost())
+    	{
+    		$serviceTipo = $this->getServiceLocator()->get("Application\Service\Tipo");
+    		$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
+    		$image = $em->getRepository("Application\Entity\Imagens")->findOneBy(array("idimagen" => $this->getRequest()->getPost("referencia")));
+    		$repoTipo = $em->getRepository("Application\Entity\ImagensHasTipo")->findBy(array("imagen" => $this->getRequest()->getPost("referencia")));
+    		unlink("public/store/".$image->getcategoria()->getSlug()."/".$image->getsubcategoria()->getSlug()."/".$image->getSrc().".png");
+    		unlink("public/store/".$image->getcategoria()->getSlug()."/".$image->getsubcategoria()->getSlug()."/".$image->getSrc());
+    		unlink("public/store/".$image->getcategoria()->getSlug()."/".$image->getsubcategoria()->getSlug()."/".$image->getSrc()."big.png");
+    		
+    		foreach($repoTipo AS $tipo)
+    		{
+    			$serviceTipo->delete($tipo->getId());
+    		}
+    		$serviceImage = $this->getServiceLocator()->get("Application\Service\Image");
+    		$serviceImage->delete($this->getRequest()->getPost("referencia"));
+    	}
+    	$viewModel = new ViewModel();
+    	$viewModel->setTerminal(true);
+    	return $viewModel;
+    }
 }

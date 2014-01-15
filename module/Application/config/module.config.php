@@ -29,6 +29,19 @@ return array(
         								'action'     => 'adiciona',
         						),
         				),
+        				'may_terminate' => true,
+        				'child_routes' => array(
+        						'default' => array(
+        								'type' => 'Zend\Mvc\Router\Http\Literal',
+				        				'options' => array(
+				        						'route'    => '/excluir',
+				        						'defaults' => array(
+				        								'controller' => 'Application\Controller\Index',
+				        								'action'     => 'excluir',
+				        						),
+				        				),
+        						),
+        				),
         	),
         	'ajax-subcategoria' => array(
         			'type' => 'Zend\Mvc\Router\Http\Literal',

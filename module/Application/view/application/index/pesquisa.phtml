@@ -308,7 +308,7 @@ display: block;
     	<?=strtoupper($image->getformato()->getNome())?> | <?=$image->getWidth()?>x<?=$image->getHeight()?> | <?=$image->getPeso()?>
     </div>
     <div class="downImage" style="height: 40px;top:190px;color:#FFFAFA;font-weight: bold;font-size:10px;position:relative;z-index:3; background-image:url('<?=$this->basepath('img/fundo.png')?>');width:202px;padding-left:5px;">
-    	<center><a target="_blank" href="<?=$this->basepath("store/".$image->getcategoria()->getSlug()."/".$image->getsubcategoria()->getSlug()."/".$image->getSrc())?>"> <button style="margin-top: 8px;" class="btn btn-mini btn-warning" type="button">Baixar Imagem</button></a></center>
+    	<center><a href="" class="excluirAction" rel="<?=$image->getIdimagen()?>"><button style="margin-top: 8px;" class="btn btn-mini btn-danger" type="button">Excluir</button></a><a target="_blank" href="<?=$this->basepath("store/".$image->getcategoria()->getSlug()."/".$image->getsubcategoria()->getSlug()."/".$image->getSrc())?>"> <button style="margin-top: 8px;" class="btn btn-mini btn-warning" type="button">Baixar Imagem</button></a></center>
     </div>
 </div>
          <?php 
