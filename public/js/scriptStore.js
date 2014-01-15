@@ -1,4 +1,20 @@
 $(document).ready(function(){	
+	$(".excluirAction").on("click",function(){
+		if(confirm("Tem certeza que deseja excluir esta imagem?"))
+			{
+				var referencia = $(this).attr("rel");
+				$.ajax({
+	    	        url: basePatch+"/upload-imagem/excluir",
+	    	        type: 'POST',
+	    	        data:{referencia:referencia},
+	    	        success: function( data )  
+	                {  
+	    	        	location.reload();
+	                },
+	    	    });
+			}
+		return false;
+	});
 	var idCategoria;
 	$("a[rel^='prettyPhoto']").prettyPhoto();
 	$('input[type=file]').bootstrapFileInput();
