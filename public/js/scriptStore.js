@@ -230,4 +230,39 @@ $(document).ready(function(){
 		$( "#adicionaImagem" ).dialog("open");
 		return false;
 	})
+	$(".automacaoAdiciona").on("click",function(){
+    	
+		var erros = "";
+    	if($(".tituloImagem").val() == "") erros = erros+"- Digite o título da imagem\n";
+    	if($(".categoriaSet").val() == "") erros = erros+"- Selecione uma categoria\n";
+    	
+    	if(erros == "")
+    		{
+    		var titulo = $(".tituloImagem").val()
+    		var descricao = $(".descricaoImagem").val()
+    		var categoria = $(".categoriaSet").val()
+    		var subcategoria = $(".subcategoriaSet").val()
+	    		$.ajax({
+	    	        url: basePatch+"/ajaxAdd",
+	    	        type: 'POST',
+	    	        data: {
+	    	        	imagemId:imagemId,
+	    	        	titulo:titulo,
+	    	        	descricao:descricao,
+	    	        	categoria:categoria,
+	    	        	subcategoria:subcategoria
+	    	        },
+	    	        success: function( data )  
+	                { 
+	    	        	alert("Imagem adicionada com sucesso!");
+	    	        	location.reload();
+	                },
+	    	    });
+    		}
+    	else
+    		{
+    			alert("Existe alguns erros abaixo:\n\n"+erros);
+    		}
+		return false;
+	})
 })
