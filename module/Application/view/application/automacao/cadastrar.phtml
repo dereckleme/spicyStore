@@ -1,0 +1,36 @@
+<script>
+	var imagemId = <?=$this->imagem->getId()?>;
+</script>
+<center>
+<img width="400" src="<?=$this->basepath("automacao/".$this->imagem->getSrc()."big.png")?>"/>
+</center>
+<div>
+<form enctype="multipart/formdata" class="formImagem">
+
+    	<input class="tituloImagem" type="text" placeholder="Titulo da foto" style="height: 40px;font-size:14px;"><br><br>
+    	<textarea placeholder="Descrição da foto" style="width:100%" class="descricaoImagem"></textarea><br><br>
+    	<span class="mostraTituloCategoria" style="display:none">
+    	<input class="tituloCategoria" type="text" placeholder="Nome da categoria" style="height: 40px;font-size:14px"><button type="button" class="btn btn-success salvarCat" style="margin-left:3px;">Salvar</button><button style="margin-left:3px;" type="button" class="btn btn-danger cancelarCategoria">Cancelar</button><br>
+    	</span>
+    	<span id="ajaxCat">
+    	<select class="form-control categoriaSet">
+    	<option value="" selected="selected">- Selecione uma categoria -</option>
+  		         <?php 
+          	foreach($this->categorias AS $categoria)
+          	{
+          ?>
+	         <option value="<?=$categoria->getIdcategoria()?>"><?=ucwords($categoria->getTitulo())?></option>
+	        <?php 
+          	}
+	        ?> 
+		</select></span><span id="ajaxSub"></span>
+		<span class="mostraTituloSubCategoria" style="display:none">
+    	<input class="titulosubcategoria" type="text" placeholder="Nome da subcategoria" style="height: 40px;font-size:14px"><button type="button" class="btn btn-success salvarSubCat" style="margin-left:3px;">Salvar</button><button style="margin-left:3px;" type="button" class="btn btn-danger cancelarSubCategoria">Cancelar</button><br>
+    	</span>
+</div>
+<p></p>
+<input type="submit" value="Adicionar" class="automacaoAdiciona"/>
+<input type="submit" value="Remover"/>
+
+    </form>
+</div>

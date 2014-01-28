@@ -43,6 +43,48 @@ return array(
         						),
         				),
         	),
+        	'automacao-imagem' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/auto',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Automacao',
+        							'action'     => 'cadastrar',
+        					),
+        			),
+
+        			'may_terminate' => true,
+        			'child_routes' => array(
+        					'gerar' => array(
+        							'type' => 'Zend\Mvc\Router\Http\Literal',
+        							'options' => array(
+        									'route'    => '/gerar',
+        									'defaults' => array(
+        											'action'     => 'index',
+        									),
+        							),
+        					),
+        					'acao' => array(
+        							'type' => 'Zend\Mvc\Router\Http\Literal',
+        							'options' => array(
+        									'route'    => '/acao',
+        									'defaults' => array(
+        											'action'     => 'actionExcluir',
+        									),
+        							),
+        					),
+        			),
+        	),
+        	'ajaxAcao' => array(
+        			'type' => 'Zend\Mvc\Router\Http\Literal',
+        			'options' => array(
+        					'route'    => '/ajaxAdd',
+        					'defaults' => array(
+        							'controller' => 'Application\Controller\Automacao',
+        							'action'     => 'image',
+        					),
+        			),
+        	),
         	'ajax-subcategoria' => array(
         			'type' => 'Zend\Mvc\Router\Http\Literal',
         			'options' => array(
@@ -176,7 +218,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'            
+            'Application\Controller\Index' => 'Application\Controller\IndexController' ,
+            'Application\Controller\Automacao' => 'Application\Controller\AutomacaoController'
         ),
     ),
     'view_manager' => array(

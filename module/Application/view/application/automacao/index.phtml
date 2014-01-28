@@ -1,0 +1,15 @@
+<script>
+$(document).ready(function(){	
+		if(confirm("Você tem certeza que deseja recarregar as imagens?"))
+		{
+			$.ajax({
+    	        url: basePatch+"/auto/acao",
+    	        type: 'POST',
+    	        success: function( data )  
+                {  
+    	        	alert("Imagens recarregadas com sucesso!");
+                },
+    	    });
+		}
+});	
+</script>

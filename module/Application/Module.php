@@ -18,6 +18,7 @@ use Application\Service\Tipo;
 use Application\Service\Categoria;
 use Application\Service\Subcategoria;
 use Application\Service\Tag;
+use Application\Service\Automacao;
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -67,6 +68,10 @@ class Module
     					},
     					'Application\Service\Tag' => function($service){
     						$Tag = new Tag($service->get('Doctrine\ORM\EntityManager'));
+    						return $Tag;
+    					},
+    					'Application\Service\Automacao' => function($service){
+    						$Tag = new Automacao($service->get('Doctrine\ORM\EntityManager'));
     						return $Tag;
     					},
     			)
