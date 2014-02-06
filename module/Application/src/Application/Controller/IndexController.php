@@ -115,9 +115,16 @@ class IndexController extends AbstractActionController
     		$em = $this->getServiceLocator()->get("Doctrine\ORM\EntityManager");
     		$repoCat = $em->getRepository("Application\Entity\Categoria")->findOneBy(array("idcategoria" => $this->getRequest()->getPost("categoria")));
     		$repoSubCat = $em->getRepository("Application\Entity\Subcategoria")->findOneBy(array("idsubcategoria" => $this->getRequest()->getPost("subcategoria")));
-    		if(!is_dir('./public/store/'.$repoCat->getSlug())) mkdir('./public/store/'.$repoCat->getSlug());
-    		if(!is_dir('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug())) mkdir('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug());
-    		
+    		if(!is_dir('./public/store/'.$repoCat->getSlug())) 
+    		{
+    			mkdir('./public/store/'.$repoCat->getSlug());
+    			chmod('./public/store/'.$repoCat->getSlug(), 0777);
+    		}
+    		if(!is_dir('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug())) 
+    		{
+    			mkdir('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug());
+    			chmod('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug(), 0777);
+    		}
     		$requestPost = new httpUploadFile();
     		$requestPost->setDestination('./public/store/'.$repoCat->getSlug()."/".$repoSubCat->getSlug());
     		foreach($requestPost->getFileInfo() as $file => $info)
