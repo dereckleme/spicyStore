@@ -191,6 +191,7 @@ $(document).ready(function(){
 			        	 $.ajax({
 			        	        url: basePatch+"/upload-imagem",
 			        	        type: 'POST',
+			        	        contentType: 'multipart/form-data',
 			        	        success: function( data )  
 			                    {  
 			        	        	

@@ -123,12 +123,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/zendframework/ZendDeveloperTools.git",
-            "reference": "8c38e67884268c94426cc4c8647d064ef13d100a"
+            "reference": "99481023c6aa4c276c652a508c0a996f1a954327"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/8c38e67884268c94426cc4c8647d064ef13d100a",
-            "reference": "8c38e67884268c94426cc4c8647d064ef13d100a",
+            "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/99481023c6aa4c276c652a508c0a996f1a954327",
+            "reference": "99481023c6aa4c276c652a508c0a996f1a954327",
             "shasum": ""
         },
         "require": {
@@ -144,7 +144,7 @@
             "bjyoungblood/bjy-profiler": "Version: dev-master, allows the usage of the (Zend) Db collector.",
             "ocramius/ocra-service-manager": "OcraServiceManager can help you track dependencies within your application."
         },
-        "time": "2013-11-13 19:43:45",
+        "time": "2014-02-05 16:01:28",
         "type": "zf-module",
         "installation-source": "source",
         "autoload": {
@@ -309,27 +309,27 @@
     },
     {
         "name": "doctrine/collections",
-        "version": "v1.1",
-        "version_normalized": "1.1.0.0",
+        "version": "v1.2",
+        "version_normalized": "1.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/collections.git",
-            "reference": "560f29c39cfcfbcd210e5d549d993a39d898b04b"
+            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/collections/zipball/560f29c39cfcfbcd210e5d549d993a39d898b04b",
-            "reference": "560f29c39cfcfbcd210e5d549d993a39d898b04b",
+            "url": "https://api.github.com/repos/doctrine/collections/zipball/b99c5c46c87126201899afe88ec490a25eedd6a2",
+            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2"
         },
-        "time": "2013-03-07 12:15:54",
+        "time": "2014-02-03 23:07:43",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.1.x-dev"
+                "dev-master": "1.2.x-dev"
             }
         },
         "installation-source": "dist",
@@ -344,7 +344,7 @@
         ],
         "authors": [
             {
-                "name": "Jonathan H. Wage",
+                "name": "Jonathan Wage",
                 "email": "jonwage@gmail.com",
                 "homepage": "http://www.jwage.com/",
                 "role": "Creator"
@@ -421,7 +421,7 @@
         ],
         "authors": [
             {
-                "name": "Jonathan H. Wage",
+                "name": "Jonathan Wage",
                 "email": "jonwage@gmail.com",
                 "homepage": "http://www.jwage.com/",
                 "role": "Creator"
@@ -598,17 +598,17 @@
     },
     {
         "name": "doctrine/dbal",
-        "version": "v2.4.1",
-        "version_normalized": "2.4.1.0",
+        "version": "v2.4.2",
+        "version_normalized": "2.4.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/dbal.git",
-            "reference": "328357bd9eea9d671fe5fff0737f01953bfe66a0"
+            "reference": "fec965d330c958e175c39e61c3f6751955af32d0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/328357bd9eea9d671fe5fff0737f01953bfe66a0",
-            "reference": "328357bd9eea9d671fe5fff0737f01953bfe66a0",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/fec965d330c958e175c39e61c3f6751955af32d0",
+            "reference": "fec965d330c958e175c39e61c3f6751955af32d0",
             "shasum": ""
         },
         "require": {
@@ -622,7 +622,7 @@
         "suggest": {
             "symfony/console": "Allows use of the command line interface"
         },
-        "time": "2013-11-12 12:38:28",
+        "time": "2014-01-01 16:43:57",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -666,18 +666,18 @@
     },
     {
         "name": "symfony/console",
-        "version": "v2.4.0",
-        "version_normalized": "2.4.0.0",
+        "version": "v2.4.1",
+        "version_normalized": "2.4.1.0",
         "target-dir": "Symfony/Component/Console",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Console.git",
-            "reference": "3c1496ae96d24ccc6c340fcc25f71d7a1ab4c12c"
+            "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Console/zipball/3c1496ae96d24ccc6c340fcc25f71d7a1ab4c12c",
-            "reference": "3c1496ae96d24ccc6c340fcc25f71d7a1ab4c12c",
+            "url": "https://api.github.com/repos/symfony/Console/zipball/4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
+            "reference": "4c1ed2ff514bd85ee186eebb010ccbdeeab05af7",
             "shasum": ""
         },
         "require": {
@@ -689,7 +689,7 @@
         "suggest": {
             "symfony/event-dispatcher": ""
         },
-        "time": "2013-11-27 09:10:40",
+        "time": "2014-01-01 08:14:50",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -857,7 +857,7 @@
             {
                 "name": "Marco Pivetta",
                 "email": "ocramius@gmail.com",
-                "homepage": "http://marco-pivetta.com/",
+                "homepage": "http://ocramius.github.com/",
                 "role": "Developer"
             },
             {
@@ -972,12 +972,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/zendframework/ZFTool.git",
-            "reference": "2d35c9a1245c84578300e6615ef36e41fbc640ff"
+            "reference": "d73bf6f0ae6ce9b92acc72ecc8f336e2352f3ae0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/zendframework/ZFTool/zipball/2d35c9a1245c84578300e6615ef36e41fbc640ff",
-            "reference": "2d35c9a1245c84578300e6615ef36e41fbc640ff",
+            "url": "https://api.github.com/repos/zendframework/ZFTool/zipball/d73bf6f0ae6ce9b92acc72ecc8f336e2352f3ae0",
+            "reference": "d73bf6f0ae6ce9b92acc72ecc8f336e2352f3ae0",
             "shasum": ""
         },
         "require": {
@@ -997,7 +997,7 @@
             "zendframework/zend-version": ">=2.2.2",
             "zendframework/zend-view": ">=2.2.2"
         },
-        "time": "2013-11-20 21:37:15",
+        "time": "2014-01-02 17:29:50",
         "bin": [
             "zf.php"
         ],
@@ -1026,16 +1026,16 @@
         "source": {
             "type": "git",
             "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-            "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60"
+            "reference": "15ba417c89505cead6ca1afa9a68f6ebba15814f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
-            "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
+            "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/15ba417c89505cead6ca1afa9a68f6ebba15814f",
+            "reference": "15ba417c89505cead6ca1afa9a68f6ebba15814f",
             "shasum": ""
         },
         "require": {
-            "doctrine/common": ">=2.2,<2.5-dev",
+            "doctrine/common": "~2.2",
             "php": ">=5.3.2"
         },
         "require-dev": {
@@ -1052,7 +1052,7 @@
             "doctrine/mongodb-odm": ">=1.0.0-BETA7",
             "doctrine/orm": ">=2.3.2"
         },
-        "time": "2013-12-06 19:17:11",
+        "time": "2014-02-06 09:36:58",
         "type": "library",
         "extra": {
             "branch-alias": {
