@@ -17,7 +17,7 @@ class ImagensRepository extends EntityRepository
 	{
 		$qb = $this->createQueryBuilder("imagem");
 		$qb->select('imagem');
-		$qb->setMaxResults(12);
+		$qb->setMaxResults(12);//
 		$qb->addOrderBy("imagem.idimagen","DESC");
 		if($categoria) 
 		{

@@ -1,4 +1,5 @@
 /data
 /config/autoload
 /.settings
-/public/images/produtos
+/public/automacao
+/store
